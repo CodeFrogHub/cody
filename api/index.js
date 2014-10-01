@@ -18,6 +18,9 @@ module.exports = function() {
         if(err) {
             log(err);
         }
+
+        log('After successed connect - try to create SuperAdmin');
+        require('./services/SuperAdmin')();
     });
 // App
     log('Init App');

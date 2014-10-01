@@ -5,12 +5,12 @@
   "main": "app.js",
   "private": true,
   "scripts": {
-      "postinstall": "./scripts/postinstall.sh",
-      "start": "./scripts/start.sh",
-      "test": "./scripts/test.sh",
-      "test-api": "./scripts/test-api.sh",
-      "test-spa": "./scripts/test-spa.sh",
-      "coverage": "./scripts/coverage.sh"
+    "postinstall": "./scripts/postinstall.sh",
+    "start": "./scripts/start.sh",
+    "test": "./scripts/test.sh",
+    "test-api": "./scripts/test-api.sh",
+    "test-spa": "./scripts/test-spa.sh",
+    "coverage": "./scripts/coverage.sh"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,7 @@
     "mongoose": "^3.8.17",
     "mongoose-schema-extend": "^0.1.7",
     "morgan": "^1.3.2",
+    "password-generator": "^0.2.2",
     "socket.io": "^1.1.0"
   }
 }
