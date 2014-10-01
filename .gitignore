@@ -1,5 +1,7 @@
 # Logs
 logs
+api/logs/
+spa/logs/
 *.log
 
 # Runtime data
@@ -31,3 +33,10 @@ node_modules
 Thumbs.db
 
 .idea
+
+# API
+/api/public/*
+!/api/public/.keep
+# SPA
+/spa/public/*
+!/spa/public/.keep

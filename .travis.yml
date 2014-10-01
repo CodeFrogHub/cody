@@ -11,3 +11,10 @@ services:
 - mongodb
 env:
 - NODE_ENV=test DEBUG="cody,cody:*"
+deploy:
+  provider: heroku
+  api_key:
+    secure: LnXAnDbfp7dYsPN1UKBpx2jOADE51ZFTJBIK+quPKDvqDyAXIkVT9Fjh9eaEjnPxP+Rm6L0jStcb2oy7+l8B+34FA6pAaWSHYo++q1l6FDwiXLpp14CLG0kjOC4GZ5Q3eo/Onj/jL5uhs3Frz7tZ45Naz2ybMK6pybqLw7N3hxI=
+  app: codycf
+  on:
+    repo: CodeFrogITUG/cody
