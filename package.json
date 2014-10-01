@@ -1,0 +1,48 @@
+{
+  "name": "cody",
+  "version": "0.1.0",
+  "description": "our pt",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+      "postinstall": "./scripts/postinstall.sh",
+      "start": "./scripts/start.sh",
+      "test": "./scripts/test.sh",
+      "test-api": "./scripts/test-api.sh",
+      "test-spa": "./scripts/test-spa.sh",
+      "coverage": "./scripts/coverage.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeFrogITUG/cody.git"
+  },
+  "author": "CodeFrog IT UG",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeFrogITUG/cody/issues"
+  },
+  "homepage": "https://github.com/CodeFrogITUG/cody",
+  "devDependencies": {
+    "express-livereload": "0.0.24",
+    "mocha": "^1.21.4",
+    "nodemon": "^1.2.1",
+    "should": "^4.0.4"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "bcrypt": "^0.8.0",
+    "body-parser": "^1.9.0",
+    "bower": "^1.3.12",
+    "coffee-script": "^1.8.0",
+    "debug": "^2.0.0",
+    "express": "^4.9.5",
+    "express-jwt": "^0.3.2",
+    "jsonwebtoken": "^1.1.2",
+    "lodash": "^2.4.1",
+    "moment": "^2.8.3",
+    "mongoose": "^3.8.17",
+    "mongoose-schema-extend": "^0.1.7",
+    "morgan": "^1.3.2",
+    "socket.io": "^1.1.0"
+  }
+}

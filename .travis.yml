@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '0.10'
+before_install:
+- npm install -g codeclimate-test-reporter
+- npm install -g istanbul
+- npm install -g bower
+after_script:
+- npm run coverage
+services:
+- mongodb
+env:
+- NODE_ENV=test DEBUG="cody,cody:*"
