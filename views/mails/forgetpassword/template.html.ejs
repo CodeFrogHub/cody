@@ -1,0 +1,16 @@
+<h1>Forgot password?</h1>
+
+<p>Hello,</p>
+<p>we receive the information that you forgot your password.</p>
+<p>
+    To change your password follow this link: 
+    <a href="<%= callbackurl %>?email=<%= user.email %>&key=<%= user.forgetPasswordKey %>"><%= callbackurl %>?key=<%= user.forgetPasswordKey %></a>
+</p>
+
+<br>
+
+<p>If you did not forget your password then you do not have to do anything. The key will expire within next 12 hours.</p>
+
+<br>
+
+<p>Your Cody-Support Team</p>

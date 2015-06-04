@@ -31,10 +31,13 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
+  /**
   '/': {
     view: 'homepage'
-  }
+  },
+  */
+  
+  '/': 'RootController.index',
 
   /***************************************************************************
   *                                                                          *
@@ -46,4 +49,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+
+  'post /login': 'AuthController.authenticate',
+  'post /register': 'AuthController.register',
+  'post /forgetpassword': 'AuthController.forgetpassword',
+  'post /verifypasswordkey': 'AuthController.verifypasswordkey',
 };

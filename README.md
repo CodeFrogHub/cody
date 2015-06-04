@@ -11,3 +11,11 @@ cody
 
 Internal platform to organize codefrogger, projects and more.
 
+## Required ENV Vars for productions
+
+* SECRET
+  * TOKEN_SECRET
+* Mailer
+  * MAILER_AUTH_HOST
+  * MAILER_AUTH_USER
+  * MAILER_AUTH_PASS
