@@ -13,7 +13,7 @@ describe('Controller: AuthController', function () {
 
   beforeEach(function () {
     userData = {
-      email: 'test@test.com',
+      email: 'test@codefrog.de',
       password: 'test1234',
       password_confirm: 'test1234'
     };
@@ -45,7 +45,7 @@ describe('Controller: AuthController', function () {
     });
 
     it('should response 401 for invalid email', function (done) {
-      userData.email = "test2@test.com";
+      userData.email = "test2@codefrog.de";
       request.post('/login').send(userData)
         .expect(401, done);
     });
@@ -83,6 +83,72 @@ describe('Controller: AuthController', function () {
       });
     });
   });
+  
+  context('resend_activation', function(){
+    var createdUser = null;
+
+    beforeEach(function (done) {
+      User.create(userData).exec(function (err, created) {
+        createdUser = created;
+        done(err);
+      });
+    });
+    
+    it('should resend activation mail again if email is valid', function(done) {
+      request.post('/resend_activation').send({email: userData.email})
+        .expect(200, done);
+    });
+    
+    it('should response 401 if missing email', function (done) {
+      request.post('/resend_activation').send({})
+        .expect(401, done);
+    });
+
+    it('should response 401 if wrong email', function (done) {
+      request.post('/resend_activation').send({email: 'test2@codefrog.de'})
+        .expect(401, done);
+    });
+  });
+  
+  context('activate', function(){
+    var createdUser = null;
+    beforeEach(function (done) {
+      userData.activationKey = "abc";
+      User.create(userData).exec(function (err, created) {
+        createdUser = created;
+        done(err);
+      });
+    });
+    it('should activate the user', function(done) {
+      request.post('/activate').send({email: userData.email, key: userData.activationKey})
+        .expect(200)
+        .expect(function(res) {
+          if (!('token' in res.body)) return "missing token";
+          if (!('user' in res.body)) return "missing user";
+        })
+        .end(done);
+    });
+    
+    it('should response 401 if missing email', function (done) {
+      request.post('/activate').send({key: userData.activationKey})
+        .expect(401, done);
+    });
+
+    it('should response 401 if wrong email', function (done) {
+      request.post('/activate').send({email: 'test2@codefrog.de', key: userData.activationKey})
+        .expect(401, done);
+    });
+    
+    it('should response 401 if missing key', function (done) {
+      request.post('/activate').send({email: userData.email})
+        .expect(401, done);
+    });
+
+    it('should response 401 if wrong key', function (done) {
+      request.post('/activate').send({email: userData.email, key: 'cde'})
+        .expect(401, done);
+    });
+  });
 
   context('forgetpassword', function () {
     var createdUser = null;
@@ -100,12 +166,12 @@ describe('Controller: AuthController', function () {
     });
 
     it('should response 401 if missing email', function (done) {
-      request.post('/forgetpassword').send({email: 'test2@test.com'})
+      request.post('/forgetpassword').send({})
         .expect(401, done);
     });
 
     it('should response 401 if wrong email', function (done) {
-      request.post('/forgetpassword').send({email: 'test2@test.com'})
+      request.post('/forgetpassword').send({email: 'test2@codefrog.de'})
         .expect(401, done);
     });
   });
@@ -118,7 +184,7 @@ describe('Controller: AuthController', function () {
       userData.forgetPasswordTimestamp = new Date(moment().subtract(11, 'hours'));
 
       userData2 = {
-        email: "test2@test.com",
+        email: "test2@codefrog.de",
         password: "test1234",
         forgetPasswordKey: rand.generate(),
         forgetPasswordTimestamp: new Date(moment().subtract(13, 'hours'))

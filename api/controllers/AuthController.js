@@ -42,6 +42,8 @@ module.exports = {
     var email = req.param('email');
     var password = req.param('password');
     var password_confirm = req.param('password_confirm');
+    
+    var callbackurl  = req.param('callbackurl');
 
     if (!email || !password || !password_confirm) {
       return res.json(401, {err: 'email, password and password_confirm required'});
@@ -50,14 +52,99 @@ module.exports = {
     if (password !== password_confirm) {
       return res.json(401, {err: 'Password doesn\'t match'});
     }
+    
+    var activationKey = rand.generate();
 
-    User.create({email: email, password: password}).exec(function(err, user) {
+    User.create({email: email, password: password, activationKey: activationKey}).exec(function(err, user) {
       if (err) {
         return res.json(err.status, {err: err});
       }
       if (user) {
-        res.json({user: user, token: TokenAuthService.issueToken(user.id)});
+        // Send Email
+        SendMailService.send(sails.config.mailer.info, {
+          from: sails.config.mailer.info.from,
+          to: user.email,
+          subject: 'Activate CodeFrog registration.',
+          folder: 'registration',
+          params: {
+            user: user,
+            callbackurl: callbackurl
+          }
+        }, function(err, results) {
+          if(err) return res.json(500, {err: err});
+
+          // Response 200 with message
+          res.json({info: 'email with instructions sent.'});
+          // res.json({user: user, token: TokenAuthService.issueToken(user.id)});
+        });
       }
+    });
+  },
+  
+  resend_activation: function(req, res) {
+    var email = req.param('email');
+    var callbackurl  = req.param('callbackurl');
+    
+    if (!email) {
+      return res.json(401, {err: 'email required'});
+    }
+    
+    User.findOneByEmail(email, function(err, user) {
+      if (err) return res.json(500, {err: err});
+      if (!user) return res.json(401, {err: 'invalid email'});
+      
+      if(user.active) return res.json(401, {err: 'already active'});
+      
+      user.activationKey = rand.generate();
+      
+      user.save(function (err, updated){
+         if (err) return res.json(500, {err: err});
+         
+         // SendMail
+         SendMailService.send(sails.config.mailer.info, {
+          from: sails.config.mailer.info.from,
+          to: user.email,
+          subject: 'Activate CodeFrog registration.',
+          folder: 'registration',
+          params: {
+            user: user,
+            callbackurl: callbackurl
+          }
+        }, function(err, results) {
+          if(err) return res.json(500, {err: err});
+
+          // Response 200 with message
+          res.json({info: 'email with instructions sent.'});
+          // res.json({user: user, token: TokenAuthService.issueToken(user.id)});
+        });
+      });
+    });
+  },
+  
+  activate: function(req, res) {
+    var email = req.param('email');
+    var key = req.param('key');
+
+    if (!email || !key) {
+      return res.json(401, {err: 'email and key required'});
+    }
+    
+    User.findOneByEmail(email, function(err, user) {
+      if (err) return res.json(500, {err: err});
+
+      if (!user) return res.json(401, {err: 'invalid email'});
+
+      if(user.active) return res.json(401, {err: 'already active'});
+      
+      if(user.activationKey != key) return res.json(401, {err: 'invalid key'});
+      
+      user.active = true;
+      user.activationKey = null;
+      user.save(function(err, u) {
+        if (err) return res.json(500, {err: err});
+
+        res.json({user: u, token: TokenAuthService.issueToken(user.id)});
+      });
     });
   },
 

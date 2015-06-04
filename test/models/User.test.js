@@ -23,7 +23,7 @@ describe('Model: User', function () {
     });
   });
 
-  context.only('attribute', function () {
+  context('attribute', function () {
     context('email', function () {
       it('should be required', function (done) {
         data.email = '';

@@ -37,8 +37,10 @@ module.exports = {
     // STATUS INFOS
     active: {
       type: 'boolean',
-      default: false
+      defaultsTo: false
     },
+    
+    activationKey: 'string',
     
     
     // FORGET PASSWORD INFOS

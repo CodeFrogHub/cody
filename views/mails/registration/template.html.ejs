@@ -1,0 +1,16 @@
+<h1>Forgot password?</h1>
+
+<p>Hello,</p>
+<p>we receive the information that you registered on our homepage.</p>
+<p>
+    To verify your registration follow this link: 
+    <a href="<%= callbackurl %>?email=<%= user.email %>&key=<%= user.activationKey %>"><%= callbackurl %>?key=<%= user.activationKey %></a>
+</p>
+
+<br>
+
+<p>If you did not register then you do not have to do anything.</p>
+
+<br>
+
+<p>Your Cody-Support Team</p>
