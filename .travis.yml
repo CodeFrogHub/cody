@@ -10,4 +10,12 @@ services:
 - mongodb
 env:
 - NODE_ENV=test CODECLIMATE_REPO_TOKEN=5ea8c502c71fb69096ac7994252d71357dc5f22c91d30cc0235945ecb28a0501
-
+deploy:
+  provider: heroku
+  api_key:
+    secure: kI6X8F/D+oRhUEmkINHWoKmQDd3vPaHfBLth2VQ3EZRNuIALcFfnQudDTJpN3cr2AVqF9LXEKFJ4hNypktABWtJUI/Bag3Lcw41HTSFlojcie/NQukwW/7Fm0foNv6XtkM6EFJ4DXLRfGFGGBN0vLgLv7wesZm0yvP5GSmFfjBw=
+  app: codefrog-cody
+  on:
+    repo: CodeFrogHub/cody
+    #all_branches: true
+    #tags: true
