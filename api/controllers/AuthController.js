@@ -148,7 +148,7 @@ module.exports = {
     });
   },
 
-  forgetpassword: function(req, res) {
+  forget_password: function(req, res) {
     var email = req.param('email');
     var callbackurl  = req.param('callbackurl');
 
@@ -187,7 +187,7 @@ module.exports = {
     });
   },
 
-  verifypasswordkey: function(req, res) {
+  verify_passwordkey: function(req, res) {
     var email = req.param('email');
     var key = req.param('key');
 

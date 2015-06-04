@@ -150,7 +150,7 @@ describe('Controller: AuthController', function () {
     });
   });
 
-  context('forgetpassword', function () {
+  context('forget_password', function () {
     var createdUser = null;
 
     beforeEach(function (done) {
@@ -161,22 +161,22 @@ describe('Controller: AuthController', function () {
     });
 
     it('should response 200', function (done) {
-      request.post('/forgetpassword').send({email: userData.email})
+      request.post('/forget_password').send({email: userData.email})
         .expect(200, done);
     });
 
     it('should response 401 if missing email', function (done) {
-      request.post('/forgetpassword').send({})
+      request.post('/forget_password').send({})
         .expect(401, done);
     });
 
     it('should response 401 if wrong email', function (done) {
-      request.post('/forgetpassword').send({email: 'test2@codefrog.de'})
+      request.post('/forget_password').send({email: 'test2@codefrog.de'})
         .expect(401, done);
     });
   });
 
-  context('verifypasswordkey', function () {
+  context('verify_passwordkey', function () {
     var userData2 = null;
 
     beforeEach(function (done) {
@@ -196,7 +196,7 @@ describe('Controller: AuthController', function () {
     });
 
     it('should response 200 and a token if key is valid', function (done) {
-      request.post('/verifypasswordkey').send({
+      request.post('/verify_passwordkey').send({
         email: userData.email,
         key: userData.forgetPasswordKey
       })
@@ -210,12 +210,12 @@ describe('Controller: AuthController', function () {
     });
 
     it('should response 401 for missing params', function (done) {
-      request.post('/verifypasswordkey').send()
+      request.post('/verify_passwordkey').send()
         .expect(401, done);
     });
 
     it('should response 401 for invalid email', function (done) {
-      request.post('/verifypasswordkey').send({
+      request.post('/verify_passwordkey').send({
         email: 'any@email.com',
         key: userData.forgetPasswordKey
       })
@@ -223,7 +223,7 @@ describe('Controller: AuthController', function () {
     });
 
     it('should response 401 if key expired', function (done) {
-      request.post('/verifypasswordkey').send({
+      request.post('/verify_passwordkey').send({
         email: userData2.email,
         key: userData2.forgetPasswordKey
       })
@@ -231,7 +231,7 @@ describe('Controller: AuthController', function () {
     });
 
     it('should response 401 for invalid key', function (done) {
-      request.post('/verifypasswordkey').send({
+      request.post('/verify_passwordkey').send({
         email: userData.email,
         key: 'invalid key'
       })

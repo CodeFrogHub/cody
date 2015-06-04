@@ -36,8 +36,6 @@ module.exports.routes = {
     view: 'homepage'
   },
   */
-  
-  '/': 'RootController.index',
 
   /***************************************************************************
   *                                                                          *
@@ -54,6 +52,10 @@ module.exports.routes = {
   'post /register': 'AuthController.register',
   'post /resend_activation': 'AuthController.resend_activation',
   'post /activate': 'AuthController.activate',
-  'post /forgetpassword': 'AuthController.forgetpassword',
-  'post /verifypasswordkey': 'AuthController.verifypasswordkey',
+  'post /forget_password': 'AuthController.forget_password',
+  'post /verify_passwordkey': 'AuthController.verify_passwordkey',
+  
+  '/': {
+    view: 'application'
+  }
 };
