@@ -35,8 +35,19 @@ var jsFilesToInject = [
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
+  
+  // Neon Theme
+  'neon/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js',
+  'neon/js/bootstrap.js',
+  'neon/js/joinable.j',
+  'neon/js/resizeable.js',
+  'neon/js/neon-api.js',
+  
+  // Application
   'js/application/main.js',
   'js/application/**.*module.js',
+  'js/application/**/*.js',
+  
   'js/**/*.js'
 ];
 

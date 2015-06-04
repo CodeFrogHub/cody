@@ -1,1 +1,3 @@
-angular.module 'cody', []
+angular.module 'cody', [
+    'ui.router'
+]
