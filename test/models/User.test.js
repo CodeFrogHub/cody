@@ -5,7 +5,7 @@ describe('Model: User', function () {
 
   beforeEach(function () {
     data = {
-      email: 'test@test.com',
+      email: 'test@codefrog.de',
       password: 'test1234',
       passwordConfirmed: 'test1234'
     };
@@ -13,15 +13,17 @@ describe('Model: User', function () {
 
   context('schema', function () {
     it('should not save undefined attributes', function (done) {
-      User.create(data)
-        .exec(function (err, created) {
-          created.should.not.have.property('passwordConfirmed');
-          done(err);
-        });
+      User.create(data).exec(function (err, created) {
+        if(err) {
+          return done(err);
+        }
+        created.should.not.have.property('passwordConfirmed');
+        done();
+      });
     });
   });
 
-  context('attribute', function () {
+  context.only('attribute', function () {
     context('email', function () {
       it('should be required', function (done) {
         data.email = '';
@@ -43,6 +45,14 @@ describe('Model: User', function () {
       });
       it('should be an email', function (done) {
         data.email = "NotReallyAnEmailAddress.de";
+        User.validate(data, function (err) {
+          should.exist(err);
+          err.details.should.containEql("email");
+          done();
+        });
+      });
+      it('should have to contain "codefrog.de"', function (done) {
+        data.email = "test@codefrog.com";
         User.validate(data, function (err) {
           should.exist(err);
           err.details.should.containEql("email");

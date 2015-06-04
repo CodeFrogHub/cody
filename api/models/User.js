@@ -8,6 +8,12 @@
 module.exports = {
 
   schema: true,
+  
+  types: {
+    domain_is_from_codefrog: function(email) {
+      return email.indexOf('codefrog.de') !== -1;
+    }
+  },
 
   attributes: {
     // USER INFOS
@@ -17,10 +23,10 @@ module.exports = {
     
     // AUTH INFOS
     email: {
-      type: 'string',
-      email: true,
+      type: 'email',
       unique: true,
-      required: true
+      required: true,
+      domain_is_from_codefrog: true
     },
     password: {
       type: 'string',
