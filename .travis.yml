@@ -3,14 +3,13 @@ node_js:
 - '0.10'
 before_install:
 - npm install -g codeclimate-test-reporter
-- npm install -g istanbul
-- npm install -g bower
 after_script:
-- npm run coverage
+- ./node_modules/.bin/istanbul cover -x "**/vendor/**" ./node_modules/.bin/_mocha --
+- codeclimate < coverage/lcov.info
 services:
 - mongodb
 env:
-- NODE_ENV=test DEBUG="cody,cody:*"
+- NODE_ENV=test CODECLIMATE_REPO_TOKEN=c5b2952432c62c390850c87a2c41ed62a0fee517b80650fc9a955d7683b8ac9a
 deploy:
   provider: heroku
   api_key:
