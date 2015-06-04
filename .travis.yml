@@ -9,7 +9,7 @@ after_script:
 services:
 - mongodb
 env:
-- NODE_ENV=test CODECLIMATE_REPO_TOKEN=c5b2952432c62c390850c87a2c41ed62a0fee517b80650fc9a955d7683b8ac9a
+- NODE_ENV=test CODECLIMATE_REPO_TOKEN=5ea8c502c71fb69096ac7994252d71357dc5f22c91d30cc0235945ecb28a0501
 deploy:
   provider: heroku
   api_key:
