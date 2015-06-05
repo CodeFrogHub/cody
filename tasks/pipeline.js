@@ -33,6 +33,7 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
+  'js/dependencies/underscore.js',
   'neon/js/jquery-1.11.0.min.js',
   'js/dependencies/angular.min.js',
   'js/dependencies/**/*.js',
@@ -52,7 +53,7 @@ var jsFilesToInject = [
   
   // Application
   'js/application/main.js',
-  'js/application/**.*module.js',
+  'js/application/**/module.js',
   'js/application/**/*.js',
   
   'js/**/*.js'
