@@ -21,6 +21,7 @@ var cssFilesToInject = [
   'neon/css/neon-core.css',
   'neon/css/neon-theme.css',
   'neon/css/neon-forms.css',
+  'neon/css/skins/white.css',
   'styles/**/*.css'
 ];
 
@@ -53,6 +54,9 @@ var jsFilesToInject = [
   
   // Application
   'js/application/main.js',
+  'js/application/modules/auth/module.js',
+  'js/application/modules/error/module.js',
+  'js/application/modules/app/module.js',
   'js/application/**/module.js',
   'js/application/**/*.js',
   

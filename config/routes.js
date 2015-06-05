@@ -55,7 +55,8 @@ module.exports.routes = {
   'post /forget_password': 'AuthController.forget_password',
   'post /verify_passwordkey': 'AuthController.verify_passwordkey',
   
-  '/': {
+  '/*': {
+    skipAssets: true,
     view: 'application'
   }
 };

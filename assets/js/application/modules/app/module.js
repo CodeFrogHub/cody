@@ -1,5 +1,5 @@
 angular.module('cody.app', [
-    
+    'cody.app.dashboard'
 ])
 .config([
     '$stateProvider',

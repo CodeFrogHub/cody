@@ -5,7 +5,8 @@
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
     <title>{{ application.title }}</title>
-
+    <base href="/">
+    
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -38,6 +39,7 @@
     <link rel="stylesheet" href="/neon/css/neon-core.css">
     <link rel="stylesheet" href="/neon/css/neon-theme.css">
     <link rel="stylesheet" href="/neon/css/neon-forms.css">
+    <link rel="stylesheet" href="/neon/css/skins/white.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
     
@@ -50,7 +52,7 @@
   	<![endif]-->
   </head>
 
-  <body class="page-body" ng-class="application.bodyClasses">
+  <body class="page-body skin-white" ng-class="application.bodyClasses">
     <%- body %>
 
 
@@ -120,10 +122,12 @@
     <script src="/neon/js/neon-custom.js"></script>
     <script src="/neon/js/neon-demo.js"></script>
     <script src="/js/application/main.js"></script>
-    <script src="/js/application/modules/app/module.js"></script>
-    <script src="/js/application/modules/auth/login/module.js"></script>
     <script src="/js/application/modules/auth/module.js"></script>
     <script src="/js/application/modules/error/module.js"></script>
+    <script src="/js/application/modules/app/module.js"></script>
+    <script src="/js/application/modules/app/dashboard/module.js"></script>
+    <script src="/js/application/modules/auth/login/module.js"></script>
+    <script src="/js/application/configs/html5ModeConfig.js"></script>
     <script src="/js/application/configs/urlRouterProviderConfig.js"></script>
     <script src="/js/application/runners/application_in_rootscope.js"></script>
     <!--SCRIPTS END-->
