@@ -8,7 +8,8 @@ angular.module('cody.auth.login', [
              url: '/login',
              views: {
                 'main': {
-                    template: JST['assets/templates/auth/login.html']
+                    template: JST['assets/templates/auth/login.html'],
+                    controller: 'LoginController'
                 }
              }
         });

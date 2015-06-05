@@ -49,6 +49,7 @@ var jsFilesToInject = [
   'neon/js/joinable.js',
   'neon/js/resizeable.js',
   'neon/js/neon-api.js',
+  'neon/js/jquery.validate.min.js',
   'neon/js/neon-custom.js',
   'neon/js/neon-demo.js',
   
