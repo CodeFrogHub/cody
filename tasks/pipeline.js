@@ -17,6 +17,10 @@
 var cssFilesToInject = [
   'neon/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css',
   'neon/css/font-icons/entypo/css/entypo.css',
+  'neon/css/bootstrap.css',
+  'neon/css/neon-core.css',
+  'neon/css/neon-theme.css',
+  'neon/css/neon-forms.css',
   'styles/**/*.css'
 ];
 
@@ -37,11 +41,14 @@ var jsFilesToInject = [
   // will be injected here in no particular order.
   
   // Neon Theme
+  'neon/js/gsap/main-gsap.js',
   'neon/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js',
   'neon/js/bootstrap.js',
-  'neon/js/joinable.j',
+  'neon/js/joinable.js',
   'neon/js/resizeable.js',
   'neon/js/neon-api.js',
+  'neon/js/neon-custom.js',
+  'neon/js/neon-demo.js',
   
   // Application
   'js/application/main.js',
