@@ -1,0 +1,28 @@
+{
+  "restartable": "rs",
+  "watch": 
+  [
+    "index.js",
+    "cody"
+  ],
+  "ignore": 
+  [
+    ".c9",
+    ".idea",
+    ".git",
+    ".tmp",
+    "cody/public",
+    "cody/assets",
+    "cody/seed.coffee",
+    "bin",
+    "node_modules/**/node_modules",
+    "test"
+  ],
+  "verbose": true,
+  "env": 
+  {
+    "NODE_ENV": "development",
+    "DEBUG": "cody,cody:*"
+  },
+  "ext": "js json coffee"
+}
