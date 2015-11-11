@@ -3,8 +3,9 @@ debug = require 'debug'
 
 app = express()
 
-app.log = debug 'cody:admin'
+app.root = __dirname
 
+app.log = debug 'cody:admin'
 
 
 app.on 'mount', (parent) ->

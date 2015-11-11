@@ -22,4 +22,5 @@ before (done) ->
     done err
 
 after (done) ->
-  App.stop done
+  # App.stop done
+  done()

@@ -1,6 +1,7 @@
 node_modules
 bower_components
 
+.cache
 .tmp
 dump.rdb
 

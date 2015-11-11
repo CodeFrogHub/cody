@@ -13,6 +13,8 @@ module.exports.bootstrap = (app, done=(->)) ->
       (done) -> app.config.database.init app, done
       (done) -> app.config.exposeModels app, done
 
+      (done) -> app.config.loadHelpers app, done
+
       (done) -> app.config.loadApps app, done
       (done) -> app.config.express.init app, done
 
@@ -26,20 +28,21 @@ module.exports.bootstrap = (app, done=(->)) ->
 
 module.exports.loadApps = (app, done=(->)) ->
   app.apps = {}
-  appFiles = app.utils.file.findInPath path.resolve(app.root, 'apps'),
+  appFiles = Utils.file.findInPath path.resolve(app.root, 'apps'),
     matcher: (file, filePath, fileStats) ->
       return fileStats.isDirectory()
 
   for appFilePath, appFile of appFiles
     app.log "load app #{appFile.basename}"
     app.apps[appFile.basename] = require appFilePath
+    app.config.express.loadDefaults app.apps[appFile.basename]
 
   done();
 
 module.exports.loadServices = (app, done=(->)) ->
   # load services
   app.services = {}
-  serviceFiles = app.utils.file.findInPath path.resolve app.root, 'services'
+  serviceFiles = Utils.file.findInPath path.resolve app.root, 'services'
   for serviceFilePath, serviceFile of serviceFiles
     app.log "load service #{serviceFile.basename}"
     app.services[serviceFile.basename] = require serviceFilePath
@@ -59,4 +62,12 @@ module.exports.exposeModels = (app, done=(->)) ->
     gkey = app._.capitalize app._.camelCase key
     app.log "expose model #{key} as #{gkey}"
     global[gkey] = model
+  done()
+
+module.exports.loadHelpers = (app, done=(->)) ->
+  helperFiles = Utils.file.findInPath path.resolve app.root, 'helpers'
+  for helperFilePath, helperFile of helperFiles
+    hkey = app._.camelCase helperFile.basename
+    app.log "load helper #{hkey}"
+    app.locals[hkey] = require(helperFilePath) app
   done()

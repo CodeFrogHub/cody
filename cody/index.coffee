@@ -6,24 +6,22 @@ debug = require 'debug'
 lodash = require 'lodash'
 async = require 'async'
 
-utils = require './utils'
+global.Utils = require './utils'
 
 #============================================================
 app = express()
+app.root = __dirname
+
 app.server = http.createServer app
 
 app._ = lodash
 app.async = async
 app.log = debug 'cody'
 
-app.root = __dirname
-app.env = app.get 'env'
-
 app.config = {}
-configFiles = utils.file.findInPath path.resolve app.root, 'config'
+configFiles = Utils.file.findInPath path.resolve app.root, 'config'
 for configFilePath, configFile of configFiles
   app._.merge app.config, require configFilePath
-app.utils = utils
 
 #============================================================
 app.bootstrap = (config={}, done=(->)) ->

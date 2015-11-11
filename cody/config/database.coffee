@@ -12,11 +12,11 @@ module.exports.database =
 
 
   loadModels: (app, done=(->)) ->
-    modelFiles = app.utils.file.findInPath path.resolve app.root, 'models'
+    modelFiles = Utils.file.findInPath path.resolve app.root, 'models'
     for modelFilePath, modelFile of modelFiles
       cfg = require modelFilePath
 
-      assignMethod = app.utils.lodash.defaultAssign
+      assignMethod = Utils.lodash.defaultAssign
       assignMethod = app._.assign if app.config.database.useDefaults
       assignMethod cfg, app.config.database.modelDefaults,
         identity: modelFile.basename
