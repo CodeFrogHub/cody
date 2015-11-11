@@ -5,7 +5,7 @@ module.exports = (grunt) ->
     watch:
       tests:
         files: ['test/**/*.coffee']
-        tasks: ['mochacli:min']
+        tasks: ['clear', 'mochacli:min']
         options:
           debounceDelay: 1000
           interval: 1000
@@ -22,26 +22,42 @@ module.exports = (grunt) ->
         env:
           NODE_ENV: 'test'
           # DEBUG: 'cody,cody:*'
-      all: {}
+      all:
+        options:
+          reporter: 'list'
       min:
         options:
           reporter: 'min'
-      apps: ['test/bootstrap.coffee', 'test/apps/**/*.coffee']
-      admin: ['test/bootstrap.coffee', 'test/apps/admin/**/*.coffee']
-      api: ['test/bootstrap.coffee', 'test/apps/api/**/*.coffee']
-      models: ['test/bootstrap.coffee', 'test/models/**/*.coffee']
-      services: ['test/bootstrap.coffee', 'test/services/**/*.coffee']
-      utils: ['test/bootstrap.coffee', 'test/utils/**/*.coffee']
+      apps:
+        options:
+          files: ['test/bootstrap.coffee', 'test/apps/**/*.coffee']
+      admin:
+        options:
+          files: ['test/bootstrap.coffee', 'test/apps/admin/**/*.coffee']
+      api:
+        options:
+          files: ['test/bootstrap.coffee', 'test/apps/api/**/*.coffee']
+      models:
+        options:
+          files: ['test/bootstrap.coffee', 'test/models/**/*.coffee']
+      services:
+        options:
+          files: ['test/bootstrap.coffee', 'test/services/**/*.coffee']
+      utils:
+        options:
+          files: ['test/utils-bootstrap.coffee', 'test/utils/**/*.coffee']
 
   grunt.loadNpmTasks 'grunt-mocha-cli'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-newer'
+  grunt.loadNpmTasks 'grunt-clear'
 
   grunt.registerTask 'default', ['watch:tests']
 
   grunt.registerTask 'test', ['mochacli:all']
-  #grunt.registerTask 'test:apps', ['mochacli:apps']
-  #grunt.registerTask 'test:admin', ['mochacli:admin']
-  #grunt.registerTask 'test:api', ['mochacli:api']
-  #grunt.registerTask 'test:models', ['mochacli:models']
-  #grunt.registerTask 'test:services', ['mochacli:services']
-  #grunt.registerTask 'test:utils', ['mochacli:utils']
+  grunt.registerTask 'test:apps', ['mochacli:apps']
+  grunt.registerTask 'test:admin', ['mochacli:admin']
+  grunt.registerTask 'test:api', ['mochacli:api']
+  grunt.registerTask 'test:models', ['mochacli:models']
+  grunt.registerTask 'test:services', ['mochacli:services']
+  grunt.registerTask 'test:utils', ['mochacli:utils']
