@@ -1,0 +1,18 @@
+{
+    "restartable": "rs",
+    "watch": ["app.js", "index.js", "cody"],
+    "ignore": [
+        ".git",
+        "node_modules/**/node_modules",
+        "test",
+        ".tmp",
+        "bin",
+        "bower_components"
+    ],
+    "verbose": true,
+    "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "cody,cody:*"
+    },
+    "ext": "js coffee json"
+}

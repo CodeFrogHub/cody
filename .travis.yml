@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '0.10'
+- '0.12'
 before_install:
 - npm install -g codeclimate-test-reporter
 after_script:
@@ -9,7 +9,7 @@ after_script:
 services:
 - mongodb
 env:
-- NODE_ENV=test CODECLIMATE_REPO_TOKEN=5ea8c502c71fb69096ac7994252d71357dc5f22c91d30cc0235945ecb28a0501
+- NODE_ENV=test
 deploy:
   provider: heroku
   api_key:

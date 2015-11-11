@@ -1,5 +1,11 @@
 languages:
   JavaScript: true
 exclude_paths:
-- "assets/neon/*"
-- "assets/js/dependencies/*"
+- ".git"
+- ".tmp"
+- "bower_components"
+- "coverage"
+- "node_modules"
+- "LICENSE"
+- "README.md"
+- "cody/assets/*"

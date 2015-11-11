@@ -1,55 +1,36 @@
 {
   "name": "cody",
+  "version": "0.1.0",
+  "description": "internal platform",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
-  "keywords": [],
-  "dependencies": {
-    "ejs": "~0.8.4",
-    "grunt": "0.4.2",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-coffee": "~0.10.1",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-cssmin": "~0.9.0",
-    "grunt-contrib-jst": "~0.6.0",
-    "grunt-contrib-less": "0.11.1",
-    "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-sails-linker": "~0.9.5",
-    "grunt-sync": "~0.0.4",
-    "include-all": "~0.1.3",
-    "jsonwebtoken": "^5.0.1",
-    "lodash": "^3.9.3",
-    "machinepack-email": "Naxmeify/machinepack-email",
-    "machinepack-passwords": "^2.2.1",
-    "moment": "^2.10.3",
-    "nodemailer-smtp-transport": "^1.0.3",
-    "random-key": "^0.3.2",
-    "rc": "~0.5.0",
-    "sails": "~0.11.0",
-    "sails-disk": "~0.10.0"
+  "main": "index.js",
+  "bin": {
+    "cody": "./bin/cody"
   },
   "scripts": {
-    "debug": "node debug app.js",
+    "postinstall": "./node_modules/.bin/bower install",
     "start": "node app.js",
     "test": "./node_modules/.bin/mocha",
-    "test:models": "./node_modules/.bin/mocha test/bootstrap.test.js test/models/",
-    "coverage": "./node_modules/.bin/istanbul cover -x \"**/vendor/**\" ./node_modules/.bin/_mocha --"
+    "coverage": "./node_modules/.bin/istanbul cover -x \"**/vendor/**\" ./node_modules/.bin/_mocha --",
+    "dev": "./node_modules/.bin/nodemon app.js",
+    "deps": "npm list --depth=0"
   },
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ubuntu/cody.git"
-  },
-  "author": "ubuntu",
-  "license": "",
   "devDependencies": {
-    "istanbul": "^0.3.14",
-    "mocha": "^2.2.5",
-    "nodemailer-stub-transport": "^1.0.0",
-    "sails-memory": "^0.10.4",
-    "should": "^6.0.3",
-    "supertest": "^1.0.1"
+    "istanbul": "^0.4.0",
+    "mocha": "^2.3.3",
+    "nodemon": "^1.8.1",
+    "should": "^7.1.1",
+    "supertest": "^1.1.0"
+  },
+  "dependencies": {
+    "async": "^1.5.0",
+    "bower": "^1.6.5",
+    "coffee-script": "^1.10.0",
+    "debug": "^2.2.0",
+    "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "sails-disk": "^0.10.8",
+    "sails-mongo": "^0.11.4",
+    "waterline": "^0.10.26"
   }
 }
