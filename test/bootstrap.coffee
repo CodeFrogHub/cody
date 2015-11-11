@@ -6,6 +6,7 @@ global.Request = require('supertest') global.App
 before (done) ->
   global.App.bootstrap
     database:
+      useDefaults: true # means that e.g. the connection setting from defaults is preferred and used
       waterline:
         adapters:
           memory: require 'sails-memory'
