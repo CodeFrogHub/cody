@@ -30,10 +30,9 @@ module.exports.findInPath = (searchPath, config={}, currentDepth=0) ->
   .forEach (file) ->
     filePath = path.resolve searchPath, file
     fileStats = fs.lstatSync filePath
-    if fileStats.isDirectory()
-      if config.recursive
-        if config.depth is -1 or config.depth > currentDepth
-          foundFiles[filePath] = self.findInPath filePath, config, currentDepth+1
+    if fileStats.isDirectory() and config.recursive
+      if config.depth is -1 or config.depth > currentDepth
+        foundFiles[filePath] = self.findInPath filePath, config, currentDepth+1
     else
       matchResult = config.matcher || false
       if _.isFunction config.matcher
