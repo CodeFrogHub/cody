@@ -36,4 +36,4 @@ app.stop = (done=(->)) ->
   app.server.close done
 
 #============================================================
-module.exports = app;
+module.exports = app
