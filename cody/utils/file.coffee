@@ -54,3 +54,11 @@ module.exports.write = (targetPath, data) ->
 module.exports.isDirectory = (targetPath) ->
   return fs.lstatSync(targetPath).isDirectory() if @checkPath targetPath
   return false
+
+module.exports.loadAndMerge = (searchPath, config={}, currentDepth=0) ->
+  files = Utils.file.findInPath searchPath, config, currentDepth
+  mergedResult = {}
+  for filePath, fileObj of files
+    _.merge mergedResult, require filePath
+
+  return mergedResult

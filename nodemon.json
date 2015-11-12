@@ -10,7 +10,7 @@
         "bower_components"
     ],
     "quite": true,
-    "verbose": true,
+    "verbose": false,
     "env": {
         "NODE_ENV": "development",
         "DEBUG": "cody,cody:*"

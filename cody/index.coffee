@@ -18,10 +18,7 @@ app._ = lodash
 app.async = async
 app.log = debug 'cody'
 
-app.config = {}
-configFiles = Utils.file.findInPath path.resolve app.root, 'config'
-for configFilePath, configFile of configFiles
-  app._.merge app.config, require configFilePath
+app.config = Utils.file.loadAndMerge path.resolve app.root, 'config' 
 
 #============================================================
 app.bootstrap = (config={}, done=(->)) ->
