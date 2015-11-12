@@ -14,9 +14,7 @@ env:
 deploy:
   provider: heroku
   api_key:
-    secure: kI6X8F/D+oRhUEmkINHWoKmQDd3vPaHfBLth2VQ3EZRNuIALcFfnQudDTJpN3cr2AVqF9LXEKFJ4hNypktABWtJUI/Bag3Lcw41HTSFlojcie/NQukwW/7Fm0foNv6XtkM6EFJ4DXLRfGFGGBN0vLgLv7wesZm0yvP5GSmFfjBw=
-  app: codefrog-cody
+    secure: Oc19y64NhfOGOFNPXI+ZxL0GeQc3P7HtWQL8C8HJAH874Os2HQRRLdIpIO/D0QloG7n3ATOfvxV7gi0CAqcOUCIfXkiQNCQvzvj9+18o5OgpRSCmnxZaUQ/+1ff7CWvhxB65/l3fSjkL86Jc3+J6st2E5Vnhy/Kg1f9BB6yQHJI=
+  app: cody
   on:
     repo: CodeFrogHub/cody
-    #all_branches: true
-    #tags: true
