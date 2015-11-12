@@ -1,9 +1,9 @@
 jsonwebtoken = require 'jsonwebtoken'
 moment = require 'moment'
 
-module.exports.issueToken = (sub, secret, expire) ->
+module.exports.issueToken = (subject, secret, expire) ->
   payload =
-    sub: sub,
+    subject: subject,
     iat: moment().unix(),
     exp: moment().add(expire, 'seconds').unix()
 
