@@ -59,6 +59,13 @@ module.exports.loadAndMerge = (searchPath, config={}, currentDepth=0) ->
   files = Utils.file.findInPath searchPath, config, currentDepth
   mergedResult = {}
   for filePath, fileObj of files
-    _.merge mergedResult, require filePath
+    if _.isFunction config.onRequire
+      requiredFile = config.onRequire filePath, fileObj
+    else
+      requiredFile = require filePath
+    if config.onFileBasename
+      mergedResult[fileObj.basename] = requiredFile
+    else
+      _.merge mergedResult, requiredFile
 
   return mergedResult

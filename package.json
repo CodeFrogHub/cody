@@ -11,7 +11,7 @@
     "postinstall": "./node_modules/.bin/bower install",
     "start": "node app.js",
     "test": "./node_modules/.bin/grunt test",
-    "coverage": "./node_modules/.bin/istanbul cover -x \"**/vendor/**\" ./node_modules/.bin/_mocha --",
+    "coverage": "./scripts/coverage.sh",
     "dev": "./node_modules/.bin/nodemon app.js",
     "watchtests": "./node_modules/.bin/grunt test:watch",
     "deps": "npm list --depth=0"

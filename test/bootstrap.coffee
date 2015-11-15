@@ -15,8 +15,8 @@ before (done) ->
             adapter: 'memory'
         defaults:
           migrate: 'drop'
-    modelDefaults:
-      connection: 'memory'
+      modelDefaults:
+        connection: 'memory'
   , (err) ->
     App.log "Bootstrap Cody" unless err
     done err

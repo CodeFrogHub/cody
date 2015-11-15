@@ -24,14 +24,12 @@ module.exports.express =
       app.use express.static publicFolderPath,
         redirect: false
 
-
-
   init: (app, done=(->)) ->
     app.config.express.loadDefaults app
 
     app.use bodyparser.json()
     app.use bodyparser.urlencoded
-      extended: false
+      extended: true
 
     app.use cookieparser()
     app.use methodoverride()
@@ -51,3 +49,4 @@ module.exports.express =
       res.render 'error',
         message: err.message
         error: if app.env is 'production' then {} else err
+        stack: if app.env is 'production' then [] else "#{err.stack}".split '\n'

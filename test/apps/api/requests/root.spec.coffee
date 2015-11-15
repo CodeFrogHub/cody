@@ -1,5 +1,8 @@
-describe.skip "Api Requests", ->
+describe "Api Requests", ->
   context "GET /api", ->
     it "should reponse 200", (done) ->
       Request.get '/api'
-      .expect 200, done
+      .expect 200
+      .expect Matcher.responseKeyInBody 'info'
+      .expect Matcher.responseKeyInBody 'version'
+      .end done
