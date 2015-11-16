@@ -5,10 +5,10 @@
   "private": true,
   "main": "index.js",
   "bin": {
-    "cody": "./bin/cody"
+    "cody": "bin/cody"
   },
   "scripts": {
-    "postinstall": "./node_modules/.bin/bower install",
+    "bower": "./node_modules/.bin/bower install",
     "start": "node app.js",
     "test": "./node_modules/.bin/grunt test",
     "coverage": "./scripts/coverage.sh",
